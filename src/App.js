@@ -58,7 +58,7 @@ function App() {
   }
 
   const editTodo=(id)=>{
-    const specificTodo=todoList.find((item)=>item.id == id);
+    const specificTodo=todoList.find((item)=>item.id === id);
     setIsEditing(true);
     setEditID(id);
     setTodo(specificTodo.title);

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 function Alert({msg,type,removeAlert,todoList}) {
     useEffect(()=>{
         const timeOut = setTimeout(()=>{
-            removeAlert()
+            removeAlert();
         },3000)
         return () => clearTimeout(timeOut)
     },[todoList])
