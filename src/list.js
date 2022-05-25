@@ -1,5 +1,6 @@
 import React from 'react'
-import './List.css';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+
 
 
 function List({items,removeTodo,editTodo}) {
@@ -9,9 +10,15 @@ function List({items,removeTodo,editTodo}) {
             const {id,title} = item;
            return( 
            <article className="todo-list" key={id}>
-                <p className='todo-item'>{title}</p>
-                <button onClick={()=>editTodo(id)}>edit</button>
-                <button onClick={()=>removeTodo(id)}>delete</button>
+                <p className='title'>{title}</p>
+                <div className='btn-container'>
+                <button 
+                type='button' className='edit-btn'
+                onClick={()=>editTodo(id)}><FaEdit /></button>
+                <button 
+                type="button" className='delete-btn'
+                onClick={()=>removeTodo(id)}><FaTrash /></button>
+                </div>
             </article>
             )
         })}

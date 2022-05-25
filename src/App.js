@@ -1,5 +1,5 @@
 import { useState,useEffect} from 'react';
-import './App.css';
+// import './App.css';
 import Alert from './alert';
 import List from './list';
 
@@ -22,7 +22,7 @@ function App() {
   const submitForm =(e)=>{
     e.preventDefault();
     if(!todo){
-      showAlert(true,"my alert component","success");
+      showAlert(true,"Please enter task","success");
     }else if(todo && isEditing){
       setTodoList(todoList.map(item=>{
         if(item.id === editID){
@@ -34,9 +34,9 @@ function App() {
       setTodo('');
       setEditID(null);
       setIsEditing(false);
-      showAlert(true,'task MOdified' , 'success' )
+      showAlert(true,'Task Modified' , 'success' )
     }else{
-      showAlert(true,'todo added' , 'success');
+      showAlert(true,'Task added' , 'success');
       const newTodo={id:new Date().getTime().toString() , title:todo};
       setTodoList([...todoList,newTodo]);
       setTodo('');
@@ -72,12 +72,13 @@ function App() {
   
     <section className="section-center">
 
-      <form className='todo-form' onSubmit={submitForm}>
+      <form className='grocery-form' onSubmit={submitForm}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} todoList={todoList} />}
         <h3>make your todo</h3>
-        <div className='todo-input'>
-          <input type="text" className='task-input' value={todo } onChange={(e)=>setTodo(e.target.value)}/>
-          <button type="submit" className='btn btn-primary' onClick={submitForm}>{isEditing ? "edit" :" Add task" }</button>
+        <div className='form-control'>
+          <input type="text" className='task' value={todo } onChange={(e)=>setTodo(e.target.value)}/>
+          <button type="submit" className='submit-btn' onClick={submitForm}>{isEditing ? "edit" :" Add task" }
+          </button>
         </div>  
       </form>
       {todoList.length > 0 && 
